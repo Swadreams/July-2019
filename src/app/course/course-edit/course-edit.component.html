@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header">
+    <h2>{{isNewCourse ? 'Add' : 'Edit'}} Course</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <form [formGroup]="courseForm" (ngSubmit)="submitForm()">
+          <div class="mb-3">
+            <label> Course Name :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="courseName">
+          </div>
+          <div class="mb-3">
+            <label> Course Code :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="courseCode">
+          </div>
+          <div class="mb-3">
+            <label> Next Batch Date :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="nextBatchDate">
+          </div>
+          <div class="mb-3">
+            <label> Price :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="price">
+          </div>
+          <div class="mb-3">
+            <label> Trainer :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="trainer">
+          </div>
+          <div class="mb-3">
+            <label> Star Rating :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="starRating">
+          </div>
+          <div class="mb-3">
+            <label> Image Url :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="imageUrl">
+          </div>
+          <div class="mb-3">
+            <label> Description :</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="description">
+          </div>
+
+          <button type="submit" class="btn btn-primary"> {{isNewCourse ? 'Add' : 'Update'}} Course </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-outline-primary"> Cancel </button>
+  </div>
+</div>
+
+<!-- 
+courseCode: "METROZ-11"
+courseId: 1
+courseName: "React"
+description: "Quis slaboris in eu cillum ex minim. Veniam cupidatat pariatur pariatur officia in aliquip velit aliqua ullamco quis mollit. Dolore sint esse id duis ut laboris culpa pariatur consectetur aute amet eu in. Nostrud laboris commodo tempor Lorem sunt anim pariatur voluptate fugiat Lorem. Proident esse consequat dolor voluptate id ipsum exercitation mollit incididunt.
+↵"
+imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2000px-React-icon.svg.png"
+nextBatchDate: "08-01-2019"
+price: 6595.71
+starRating: 3.9
+trainer: "Lupe Estrada" -->

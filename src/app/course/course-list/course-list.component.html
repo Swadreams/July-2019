@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+        <h1 class="col-sm-6">Welcome</h1>
+        <div class="col-sm-6 text-right">
+          {{message}}
+        </div>
+    </div>
+  </div>
+
+  <div class="card-body text-center">
+
+    <div class="alert alert-danger" *ngIf="error">
+      {{error}}
+    </div>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <th> 
+          <button class="btn btn-warning" (click)="toggleImage()"> {{ showImage ? 'Hide' : 'Show'}} Image</button>
+        </th>
+        <th> Course Name </th>
+        <th> Trainer </th>
+        <th> Next Batch Date </th>
+        <th> Price </th>
+        <th> Rating </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses" [routerLink]="['/courses/details', course.courseId]">
+          <td>
+            <img *ngIf="showImage" [src]="course.imageUrl" alt="" width="50px">
+          </td>
+          <td> {{course.courseName}} </td>
+          <td> {{course.trainer}} </td>
+          <td> {{course.nextBatchDate | date: 'dd-MMM-yy'}} </td>
+          <td> {{course.price | currency: 'INR': true : '3.2-3'}} </td>
+          <td> 
+          <!-- {{course.starRating}}  -->
+          <app-star rating="{{course.starRating}}" (ratingClicked)="starClick($event)"></app-star>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-footer">
+    @Copyright 2019-2020
+  </div>
+</div>

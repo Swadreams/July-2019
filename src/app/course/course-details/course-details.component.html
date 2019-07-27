@@ -1,0 +1,47 @@
+<div class="card" *ngIf="course"> 
+  <div class="card-header">
+    <h4>Course Details</h4>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-4"> Course Name </div>
+          <div class="col-sm-8"> {{course.courseName}}</div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4"> Trainer </div>
+          <div class="col-sm-8"> {{course.trainer}}</div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4"> Batch Start Date </div>
+          <div class="col-sm-8"> {{course.nextBatchDate}}</div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4"> Price </div>
+          <div class="col-sm-8"> {{course.price}}</div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4"> Description </div>
+          <div class="col-sm-8"> {{course.description}}</div>
+        </div>
+        <hr>
+      </div>
+      <div class="col-sm-4">
+        <img [src]="course.imageUrl" width="200px">
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-right">
+    <button class="btn btn-primary mr-3" [routerLink]="['/courses']">Back</button>
+    <button class="btn btn-warning mr-3" [routerLink]="['/courses/edit', courseId]">Edit</button>
+    <button class="btn btn-danger" (click)="deleteCourse()">Delete</button>
+  </div>
+
+</div>
