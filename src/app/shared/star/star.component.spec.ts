@@ -22,4 +22,17 @@ describe('StarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit an event on click of star', () => {
+    let message;
+    component.rating = 4;
+    component.ratingClicked
+             .subscribe(
+               response => {
+                message = response;
+                expect(message).toContain('4');
+               }
+             )
+    component.onClick();
+  });
 });

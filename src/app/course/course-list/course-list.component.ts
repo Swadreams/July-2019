@@ -7,17 +7,26 @@ import { CourseService } from '../course.service';
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
-
   courses;
-  error: string;
-  showImage: boolean = true;
+  showImage: boolean = false;
   message: string;
-
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
-    // this.getCourses();
-    this.getCourseFromFirebase();
+    this.getCourses();
+  }
+
+  getCourses() {
+    this.courseService.getCourses()
+        .subscribe(
+          response => {
+            this.courses = response;
+          },
+          error => {
+            this.message = error;
+            console.log('error', error);
+          }
+        )
   }
 
   toggleImage() {
@@ -28,19 +37,4 @@ export class CourseListComponent implements OnInit {
     this.message = event;
   }
 
-  getCourseFromFirebase() {
-    this.courseService.getCoursesFromFirebase()
-        .subscribe(
-          response => {
-            this.courses = [];
-            response.forEach(item => {
-              let course;
-              course = item.payload.val();
-              course.courseId = item.payload.key;
-              this.courses.push(course);
-            });
-            console.log(this.courses);
-          }
-        )
-  }
 }
